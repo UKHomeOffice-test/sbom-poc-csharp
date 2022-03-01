@@ -1,0 +1,24 @@
+name: CreateSBOM
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+    
+jobs:
+  build-sbom:
+    runs-on: ubuntu-latest
+    steps:      
+      - name: Generate XML SBOM
+        uses: CycloneDX/gh-dotnet-generate-sbom@v1
+        with:
+          path: ./sbom-poc-csharp.csproj
+          # github-bearer-token: ${{ secrets.CYCLONEDX_TOKEN }}
+
+      - name: Generate JSON SBOM
+        uses: CycloneDX/gh-dotnet-generate-sbom@master
+        with:
+          path: ./sbom-poc-csharp.csproj
+          json: true
+          # github-bearer-token: ${{ secrets.CYCLONEDX_TOKEN }}
