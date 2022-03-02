@@ -13,12 +13,12 @@ jobs:
       - name: Generate XML SBOM
         uses: CycloneDX/gh-dotnet-generate-sbom@v1
         with:
-          path: ../
+          path: ./
           # github-bearer-token: ${{ secrets.CYCLONEDX_TOKEN }}
 
       - name: Generate JSON SBOM
         uses: CycloneDX/gh-dotnet-generate-sbom@master
         with:
-          path: ../
+          path: ./
           json: true
           # github-bearer-token: ${{ secrets.CYCLONEDX_TOKEN }}
